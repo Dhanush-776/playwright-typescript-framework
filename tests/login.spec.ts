@@ -1,13 +1,19 @@
 import { expect } from '@playwright/test';
 import { test } from '../fixtures/fixtures';
-import { validLoginData } from '../test-data/loginData';
+import { loginData } from '../test-data/loginData';
 
-test('Login to SauceDemo', async ({ page, loginPage, dashboardPage}) => {
+for (const data of loginData) {
 
-    await loginPage.goto();
+    test(`Login Test - ${data.username}`, async ({ page, loginPage, dashboardPage }) => {
+        await loginPage.goto();
+        await loginPage.login(data);
 
-    await loginPage.login(validLoginData);
-    
-    await expect(dashboardPage.productTitle).toBeVisible();
+        if (data.shouldLogin == true) {
+            await expect(dashboardPage.productTitle).toBeVisible();
+        }
+        else {
+            await expect(page.getByRole('heading', { name: data.expectedError })).toBeVisible();
+        }
+    })
 
-})
+}
