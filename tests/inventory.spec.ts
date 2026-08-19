@@ -6,4 +6,6 @@ test('Testing Inventory Storage State', async ( { page, dashboardPage }) => {
     await dashboardPage.goto();
     await expect(dashboardPage.productTitle).toBeVisible();
 
+    await expect(page.locator('[@data-test="inventory-item-name"]')).toHaveCount(6);
+
 });
