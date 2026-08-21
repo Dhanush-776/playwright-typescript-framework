@@ -49,10 +49,11 @@ export default defineConfig({
       dependencies: ['setup'],
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] , storageState: 'playwright/.auth/user.json'},
+      dependencies: ['setup'],
+    },
 
     // {
     //   name: 'webkit',
