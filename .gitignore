@@ -10,3 +10,5 @@ screenshots/
 .env
 .env.*
 !.env.example
+allure-report/
+allure-results/
