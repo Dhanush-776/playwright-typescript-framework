@@ -1,10 +1,12 @@
 import { Locator, Page } from "@playwright/test";
+import { Logger } from "../utils/Logger";
 
 export class DashboardPage {
 
     readonly productTitle: Locator;
 
     async goto(){
+        Logger.info('Navigating to inventory page');
         await this.page.goto('/inventory.html');
     }
 
@@ -17,6 +19,7 @@ export class DashboardPage {
     }
 
     async addToCart(productName: string){
+        Logger.info(`Adding product to cart: ${productName}`);
         await this.inventoryItem(productName).getByRole('button', { name: 'Add to cart'}).click();
     }
 
