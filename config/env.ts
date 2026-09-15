@@ -1,6 +1,10 @@
 import dotenv from 'dotenv';
 
-dotenv.config();
+const environment = process.env.TEST_ENV || 'dev';
+
+dotenv.config({
+    path: `.env.${environment}`
+});
 
 const baseURL = process.env.BASE_URL;
 
@@ -9,5 +13,6 @@ if(!baseURL){
 }
 
 export const env = {
-    baseURL
+    baseURL,
+    environment
 };
