@@ -11,14 +11,14 @@ test.describe('Login Tests', () => {
     for (const data of loginData) {
 
         test(`Login with ${data.username} - ${data.expectedOutcome}`,
-            async ({ page, loginPage, dashboardPage }) => {
+            async ({ loginPage, dashboardPage }) => {
                 await loginPage.login(data);
 
                 if (data.expectedOutcome == 'success') {
                     await expect(dashboardPage.productTitle).toBeVisible();
                 }
                 else {
-                    await expect(page.locator('[data-test="error"]')).toContainText(`${data.expectedError}`);
+                    await expect(loginPage.errorMessage).toContainText(`${data.expectedError}`);
                 }
             })
 

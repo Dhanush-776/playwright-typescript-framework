@@ -5,13 +5,14 @@ export class LoginPage {
     private readonly usernameTextbox: Locator;
     private readonly passwordTextbox: Locator;
     private readonly loginButton: Locator;
+    readonly errorMessage: Locator;
     
     constructor(private readonly page: Page) { 
 
         this.usernameTextbox = page.locator('#user-name');
         this.passwordTextbox = page.locator('#password');
         this.loginButton = page.locator('#login-button');
-    
+        this.errorMessage = page.locator('[data-test="error"]');
     }
 
     async goto(): Promise<void>{
