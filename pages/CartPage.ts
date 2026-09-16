@@ -2,7 +2,11 @@ import { Locator, Page } from "@playwright/test";
 
 export class CartPage{
 
-    constructor(private readonly page: Page){ }
+    private readonly checkoutBtn: Locator;
+
+    constructor(private readonly page: Page){ 
+        this.checkoutBtn = this.page.locator('[data-test="checkout"]');
+    }
 
     private cartItem(name: string){
         return this.page.locator('[data-test="inventory-item"]').filter({ hasText: name });
@@ -13,4 +17,8 @@ export class CartPage{
     }
 
     readonly cartBadge = () => this.page.locator('[data-test="shopping-cart-badge"]');
+
+    async clickCheckout(): Promise<void> {
+        await this.checkoutBtn.click();
+    }
 }
