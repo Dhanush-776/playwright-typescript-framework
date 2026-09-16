@@ -27,6 +27,8 @@ jobs:
  
       - name: Run Playwright tests
         run: npx playwright test
+        env:
+          BASE_URL: ${{ vars.BASE_URL }}
  
       - name: Upload HTML report
         if: always()
