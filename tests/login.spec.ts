@@ -10,7 +10,7 @@ test.describe('Login Tests', () => {
 
     for (const data of loginData) {
 
-        test(`Login with ${data.username} - ${data.expectedOutcome}`,
+        test(`Login with ${data.username} - ${data.expectedOutcome} @login`,
             async ({ loginPage, dashboardPage }) => {
                 await loginPage.login(data);
 

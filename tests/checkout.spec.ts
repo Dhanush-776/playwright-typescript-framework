@@ -2,7 +2,7 @@ import { expect } from '@playwright/test';
 import { test } from '../fixtures/fixtures';
 import { createCheckoutData } from '../test-data/checkoutData';
 
-test('Complete checkout using factory data', async ({
+test('Complete checkout using factory data @checkout', async ({
     dashboardPage,
     cartPage,
     checkoutPage
@@ -25,7 +25,7 @@ test('Complete checkout using factory data', async ({
     await checkoutPage.clickFinish();
 });
 
-test('Checkout with missing postal code', async ({
+test('Checkout with missing postal code @checkout', async ({
     dashboardPage,
     cartPage,
     checkoutPage

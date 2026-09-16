@@ -2,14 +2,14 @@ import { test } from '../fixtures/fixtures';
 import { expect } from '@playwright/test';
 import { ScreenshotUtils } from '../utils/ScreenshotUtils';
 
-test('Testing Inventory Storage State', async ( { page, dashboardPage }) => {
+test('Testing Inventory Storage State @inventory', async ( { page, dashboardPage }) => {
     await dashboardPage.goto();
     await expect(dashboardPage.productTitle).toBeVisible();
     await expect(page.locator('[data-test="inventory-item-name"]')).toHaveCount(6);
     await ScreenshotUtils.takeScreenshot(page, 'inventory-page');
 });
 
-test('Remove a specific product from cart using filter', async({ dashboardPage, cartPage }) => {
+test('Remove a specific product from cart using filter @inventory', async({ dashboardPage, cartPage }) => {
 
     await dashboardPage.goto();
     await dashboardPage.addToCart('Sauce Labs Bike Light');
