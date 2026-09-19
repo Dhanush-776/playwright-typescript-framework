@@ -12,3 +12,4 @@ screenshots/
 !.env.example
 allure-report/
 allure-results/
+.playwright-mcp/
